@@ -5,7 +5,7 @@ import { CONSTANTS, getOtpInfo, isAuth } from "~/api/core.ts";
 const app = new Hono();
 
 app.all("*", (ctx, next) => {
-  if (isAuth(ctx.req.raw.headers.get(CONSTANTS.ENV_KEY))) {
+  if (!isAuth(ctx.req.raw.headers.get(CONSTANTS.ENV_KEY))) {
     throw new HTTPException(Status.Unauthorized, {
       message: "認証できるAPIキーを用意してください",
     });
