@@ -1,0 +1,12 @@
+{
+  "tasks": {
+    "dev": "deno run --allow-net=0.0.0.0:8000 --allow-env=PSEUDO_OTP_API_KEY --unstable --watch api/main.ts",
+    "test": "deno test --allow-env=PSEUDO_OTP_API_KEY --unstable --trace-ops"
+  },
+  "imports": {
+    "~/": "./",
+    "std/": "https://deno.land/std@0.204.0/",
+    "hono": "https://deno.land/x/hono@v3.9.0/mod.ts"
+  },
+  "exclude": ["README.md"]
+}
