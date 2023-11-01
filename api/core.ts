@@ -77,7 +77,7 @@ export const getOtpInfo = async (
     };
 
     // OTP自体の有効期限の1秒後に失効するようKVに保存
-    await kv.set([key], otpInfo, { expireIn: expiredSeconds * 1000 + 1000 });
+    await kv.set(["otp", key], otpInfo, { expireIn: expiredSeconds * 1000 + 1000 });
 
     return otpInfo;
   }
