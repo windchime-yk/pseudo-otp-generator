@@ -1,6 +1,7 @@
 import { Hono, HTTPException } from "hono";
 import { Status } from "std/http/http_status.ts";
 import { CONSTANTS, getOtpInfo, isAuth } from "~/api/core.ts";
+import "std/dotenv/load.ts";
 
 const app = new Hono();
 

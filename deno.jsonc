@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "dev": "deno run --allow-net=0.0.0.0:8000 --allow-env=PSEUDO_OTP_API_KEY --unstable --watch api/main.ts",
+    "dev": "deno run --allow-net=0.0.0.0:8000 --allow-read=.env,.env.defaults,.env.example --allow-env=PSEUDO_OTP_API_KEY --unstable --watch api/main.ts",
     "test": "deno test --allow-env=PSEUDO_OTP_API_KEY --unstable --trace-ops"
   },
   "imports": {
