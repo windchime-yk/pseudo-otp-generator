@@ -44,6 +44,7 @@ app.onError((err, ctx) => {
   return ctx.json({
     status: Status.ServiceUnavailable,
     message: "何らかのエラーが発生しているようです",
+    err,
   }, Status.ServiceUnavailable);
 });
 
