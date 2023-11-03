@@ -3,7 +3,11 @@
     "dev:app": "deno run -A --unstable --watch app/worker.tsx",
     "dev:api": "deno run --allow-net=0.0.0.0:8000 --allow-read=.env,.env.defaults,.env.example --allow-env=PSEUDO_OTP_API_KEY --unstable --watch api/main.ts",
     "preview": "deno run -A --unstable app/main.ts",
-    "test": "deno test --allow-env=PSEUDO_OTP_API_KEY --unstable --trace-ops"
+    "test": "deno test --allow-env=PSEUDO_OTP_API_KEY --unstable --trace-ops",
+    "compile:windows": "deno compile -A --output pseudo-otp-checker-windows --target x86_64-pc-windows-msvc --no-terminal ./app/main.ts",
+    "compile:darwin:x86": "deno compile -A --output pseudo-otp-checker-darwin --target x86_64-apple-darwin ./app/main.ts",
+    "compile:darwin:aarch64": "deno compile -A --output pseudo-otp-checker-darwin --target aarch64-apple-darwin ./app/main.ts",
+    "compile:linux": "deno compile -A --output pseudo-otp-checker-linux --target x86_64-unknown-linux-gnu ./app/main.ts"
   },
   "imports": {
     "~/": "./",
