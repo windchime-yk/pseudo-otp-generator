@@ -19,7 +19,7 @@ Deno.test("OTP情報群の試験", async (t) => {
     assertEquals(otpInfo.otp.toString().length, 10);
     assertEquals(otpInfo.expired_seconds, 604_800);
 
-    kv.delete([KV_KEY]);
+    kv.delete(["otp", KV_KEY]);
     kv.close();
   });
 
@@ -31,14 +31,14 @@ Deno.test("OTP情報群の試験", async (t) => {
       created_at: new Date(),
       expired_seconds: 86_400,
     };
-    kv.set([KV_KEY], beforeOtpInfo);
+    kv.set(["otp", KV_KEY], beforeOtpInfo);
     const otpInfo = await getOtpInfo(kv, KV_KEY, 604_800);
 
     assertEquals(otpInfo.otp, beforeOtpInfo.otp);
     assertEquals(otpInfo.created_at, beforeOtpInfo.created_at);
     assertEquals(otpInfo.expired_seconds, beforeOtpInfo.expired_seconds);
 
-    kv.delete([KV_KEY]);
+    kv.delete(["otp", KV_KEY]);
     kv.close();
   });
 
@@ -50,13 +50,13 @@ Deno.test("OTP情報群の試験", async (t) => {
       created_at: new Date("1997/04/19"),
       expired_seconds: 86_400,
     };
-    kv.set([KV_KEY], beforeOtpInfo);
+    kv.set(["otp", KV_KEY], beforeOtpInfo);
     const otpInfo = await getOtpInfo(kv, KV_KEY, 604_800);
 
     assertEquals(otpInfo.otp.toString().length, 10);
     assertEquals(otpInfo.expired_seconds, 604_800);
 
-    kv.delete([KV_KEY]);
+    kv.delete(["otp", KV_KEY]);
     kv.close();
   });
 });
