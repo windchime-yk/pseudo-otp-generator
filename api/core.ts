@@ -62,7 +62,7 @@ export const getOtpInfo = async (
   key: string,
   expiredSeconds: number,
 ): Promise<OtpInfo> => {
-  const beforeOtp = await kv.get<OtpInfo>([key]);
+  const beforeOtp = await kv.get<OtpInfo>(["otp", key]);
   const otp = generateOtp();
 
   // 以前のOTPが保存されていないか有効期限切れであれば、新規のOTP情報群を返却
@@ -77,7 +77,9 @@ export const getOtpInfo = async (
     };
 
     // OTP自体の有効期限の1秒後に失効するようKVに保存
-    await kv.set(["otp", key], otpInfo, { expireIn: expiredSeconds * 1000 + 1000 });
+    await kv.set(["otp", key], otpInfo, {
+      expireIn: expiredSeconds * 1000 + 1000,
+    });
 
     return otpInfo;
   }
