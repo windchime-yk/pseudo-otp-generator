@@ -1,7 +1,7 @@
 {
   "tasks": {
-    "dev:app": "deno run -A --unstable --watch app/worker.tsx",
-    "dev:api": "deno run --allow-net=0.0.0.0:8000 --allow-read=.env,.env.defaults,.env.example --allow-env=PSEUDO_OTP_API_KEY --unstable --watch api/main.ts",
+    "dev:app": "deno run --allow-net=0.0.0.0:8081,api.deno.com,us-east4.txnproxy.deno-gcp.net --allow-read=.env,.env.defaults,.env.example --allow-env=PSEUDO_OTP_API_KEY,PSEUDO_OTP_DB_URL,DENO_KV_ACCESS_TOKEN --unstable --watch app/worker.tsx",
+    "dev:api": "deno run --allow-net=0.0.0.0:8000 --allow-read=.env,.env.defaults,.env.example --allow-env=PSEUDO_OTP_API_KEY,PSEUDO_OTP_DB_URL,DENO_KV_ACCESS_TOKEN --unstable --watch api/main.ts",
     "preview": "deno run -A --unstable app/main.ts",
     "test": "deno test --allow-env=PSEUDO_OTP_API_KEY --unstable --trace-ops",
     "compile:windows": "deno compile -A --output pseudo-otp-checker-windows --target x86_64-pc-windows-msvc --no-terminal ./app/main.ts",
