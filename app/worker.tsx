@@ -13,21 +13,7 @@ install({
 
 export type CardItems = OtpInfo & { path: Deno.KvKeyPart };
 
-/**
- * @see https://docs.deno.com/kv/manual/on_deploy#connect-to-managed-databases-from-outside-of-deno-deploy
- */
-const kv = await Deno.openKv(Deno.env.get("PSEUDO_OTP_DB_URL"));
-
-const kvDataList = kv.list<OtpInfo>({ prefix: ["otp"] });
-const otpList: CardItems[] = [];
-for await (const kvData of kvDataList) {
-  otpList.push({
-    path: kvData.key[1],
-    ...kvData.value,
-  });
-}
-
-const Layout = () => (
+const Layout = ({ otpList }: { otpList: CardItems[] }) => (
   <html lang="ja">
     <head>
       <meta charSet="UTF-8" />
@@ -58,8 +44,22 @@ const Layout = () => (
   </html>
 );
 
-const handler: Deno.ServeHandler = () => {
-  const renderedHtml = renderToString(<Layout />);
+const handler: Deno.ServeHandler = async () => {
+  /**
+   * @see https://docs.deno.com/kv/manual/on_deploy#connect-to-managed-databases-from-outside-of-deno-deploy
+   */
+  const kv = await Deno.openKv(Deno.env.get("PSEUDO_OTP_DB_URL"));
+
+  const kvDataList = kv.list<OtpInfo>({ prefix: ["otp"] });
+  const otpList: CardItems[] = [];
+  for await (const kvData of kvDataList) {
+    otpList.push({
+      path: kvData.key[1],
+      ...kvData.value,
+    });
+  }
+
+  const renderedHtml = renderToString(<Layout otpList={otpList} />);
   const { html, css } = extract(renderedHtml);
   return new Response(
     html.replace("</head>", `<style data-twind>${css}</style></head>`),
