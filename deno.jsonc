@@ -4,10 +4,10 @@
     "dev:api": "deno run --allow-net=0.0.0.0:8000 --allow-read=.env,.env.defaults,.env.example --allow-env=PSEUDO_OTP_API_KEY,PSEUDO_OTP_DB_URL,DENO_KV_ACCESS_TOKEN --unstable --watch api/main.ts",
     "preview": "deno run -A --unstable app/main.ts",
     "test": "deno test --allow-env=PSEUDO_OTP_API_KEY --unstable --trace-ops",
-    "compile:windows": "deno compile -A --output pseudo-otp-checker-windows --target x86_64-pc-windows-msvc --no-terminal ./app/main.ts",
-    "compile:darwin:x86": "deno compile -A --output pseudo-otp-checker-darwin --target x86_64-apple-darwin ./app/main.ts",
-    "compile:darwin:aarch64": "deno compile -A --output pseudo-otp-checker-darwin --target aarch64-apple-darwin ./app/main.ts",
-    "compile:linux": "deno compile -A --output pseudo-otp-checker-linux --target x86_64-unknown-linux-gnu ./app/main.ts"
+    "compile:windows": "deno compile -A --unstable --output poc-windows --target x86_64-pc-windows-msvc --include ./app/worker.tsx ./app/main.ts",
+    "compile:darwin:x86": "deno compile -A --unstable --output poc-darwin-x86 --target x86_64-apple-darwin --include ./app/worker.tsx ./app/main.ts",
+    "compile:darwin:aarch64": "deno compile -A --unstable --output poc-darwin-aarch64 --target aarch64-apple-darwin --include ./app/worker.tsx ./app/main.ts",
+    "compile:linux": "deno compile -A --unstable --output poc-linux --target x86_64-unknown-linux-gnu --include ./app/worker.tsx ./app/main.ts"
   },
   "imports": {
     "~/": "./",
@@ -20,9 +20,5 @@
     "dayjs": "npm:dayjs@1.11.10",
     "webview": "https://deno.land/x/webview@0.7.6/mod.ts"
   },
-  "exclude": ["README.md"],
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "npm:preact"
-  }
+  "exclude": ["README.md"]
 }

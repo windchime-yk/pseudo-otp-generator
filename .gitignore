@@ -1,1 +1,7 @@
 .env
+
+# compiled app
+poc-windows.exe
+poc-darwin-x86
+poc-darwin-aarch64
+poc-linux
