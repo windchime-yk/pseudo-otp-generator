@@ -7,7 +7,7 @@ export const Card = ({ path, otp, created_at, expired_seconds }: CardItems) => {
   return (
     <section class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <h2 class="text-3xl font-semibold tracking-tight">
-        {path}
+        {path.toString()}
       </h2>
 
       <dl class="flex">
