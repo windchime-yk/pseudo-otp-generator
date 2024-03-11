@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h } from 'preact';
+import { h } from "preact";
 import dayjs from "dayjs";
 import { type CardItems } from "~/app/worker.tsx";
 

@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h } from 'preact';
+import { h } from "preact";
 import { renderToString } from "preact-render-to-string";
 import { extract, install } from "@twind/core";
 import presetTailwind from "@twind/preset-tailwind";
