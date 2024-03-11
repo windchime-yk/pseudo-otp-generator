@@ -1,4 +1,4 @@
-import { assertEquals } from "std/assert/mod.ts";
+import { assertEquals } from "@std/assert";
 import { CONSTANTS, getOtpInfo, isAuth, type OtpInfo } from "~/api/core.ts";
 
 Deno.test("APIキーの認証", () => {

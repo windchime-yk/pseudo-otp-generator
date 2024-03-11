@@ -1,5 +1,6 @@
 /** @jsx h */
 import { h } from "preact";
+
 export const Header = () => {
   return (
     <header class="bg-white border-gray-200 dark:bg-gray-900">

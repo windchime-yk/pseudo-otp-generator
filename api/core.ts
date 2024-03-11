@@ -1,4 +1,4 @@
-import { difference } from "std/datetime/mod.ts";
+import { difference } from "@std/datetime/difference";
 
 export const CONSTANTS = {
   ENV_KEY: "PSEUDO_OTP_API_KEY",
