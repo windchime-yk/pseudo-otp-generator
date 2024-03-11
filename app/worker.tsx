@@ -6,7 +6,7 @@ import presetTailwind from "@twind/preset-tailwind";
 import { type OtpInfo } from "~/api/core.ts";
 import { Header } from "~/app/components/Header.tsx";
 import { Card } from "~/app/components/Card.tsx";
-import "@std/dotenv/load";
+import "std/dotenv/load.ts";
 
 install({
   darkMode: "media",

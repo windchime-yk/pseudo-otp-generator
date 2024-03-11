@@ -1,14 +1,13 @@
-import { Hono } from "hono";
-import { HTTPException } from "hono/http-exception";
-import { STATUS_CODE } from "@std/http/status";
+import { Hono, HTTPException } from "hono";
+import { Status } from "std/http/http_status.ts";
 import { CONSTANTS, getOtpInfo, isAuth } from "~/api/core.ts";
-import "@std/dotenv/load";
+import "std/dotenv/load.ts";
 
 const app = new Hono();
 
 app.all("*", (ctx, next) => {
   if (!isAuth(ctx.req.raw.headers.get(CONSTANTS.ENV_KEY))) {
-    throw new HTTPException(STATUS_CODE.Unauthorized, {
+    throw new HTTPException(Status.Unauthorized, {
       message: "認証できるAPIキーを用意してください",
     });
   }
@@ -30,9 +29,9 @@ app.get("/otp/:service{.+}", async (ctx) => {
 
 app.all("*", (ctx) => {
   return ctx.json({
-    status: STATUS_CODE.NotFound,
+    status: Status.NotFound,
     message: "お探しのものは存在しません",
-  }, STATUS_CODE.NotFound);
+  }, Status.NotFound);
 });
 
 app.onError((err, ctx) => {
@@ -43,10 +42,10 @@ app.onError((err, ctx) => {
     }, err.status);
   }
   return ctx.json({
-    status: STATUS_CODE.ServiceUnavailable,
+    status: Status.ServiceUnavailable,
     message: "何らかのエラーが発生しているようです",
     err,
-  }, STATUS_CODE.ServiceUnavailable);
+  }, Status.ServiceUnavailable);
 });
 
 Deno.serve(app.fetch);
