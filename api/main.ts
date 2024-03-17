@@ -1,7 +1,11 @@
 import { Hono, HTTPException } from "hono";
 import { Status } from "std/http/http_status.ts";
 import { CONSTANTS, getOtpInfo, isAuth } from "~/api/core.ts";
-import "std/dotenv/load.ts";
+import { load } from "std/dotenv/mod.ts";
+
+if (Deno.env.get("DEV_MODE") === "DEV") {
+  load({ export: true })
+}
 
 const app = new Hono();
 
