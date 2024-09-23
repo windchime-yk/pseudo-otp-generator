@@ -1,5 +1,5 @@
-import { dirname, join } from "std/path/mod.ts";
-import { Webview } from "webview";
+import { dirname, join } from "@std/path";
+import { Webview } from "@webview/webview";
 
 const worker = new Worker(join(dirname(import.meta.url), "worker.tsx"), {
   type: "module",

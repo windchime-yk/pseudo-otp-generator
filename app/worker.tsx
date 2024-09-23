@@ -6,10 +6,10 @@ import presetTailwind from "@twind/preset-tailwind";
 import { type OtpInfo } from "~/api/core.ts";
 import { Header } from "~/app/components/Header.tsx";
 import { Card } from "~/app/components/Card.tsx";
-import { load } from "std/dotenv/mod.ts";
+import { load } from "@std/dotenv";
 
 if (Deno.env.get("DEV_MODE") === "DEV") {
-  load({ export: true })
+  load({ export: true });
 }
 
 install({
