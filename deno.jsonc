@@ -19,7 +19,7 @@
     "@std/path": "jsr:@std/path@^1.0.8",
     "@twind/core": "npm:@twind/core@1.1.3",
     "@twind/preset-tailwind": "npm:@twind/preset-tailwind@1.1.4",
-    "@webview/webview": "jsr:@webview/webview@^0.8.1",
+    "@webview/webview": "jsr:@webview/webview@^0.9.0",
     "dayjs": "npm:dayjs@1.11.13",
     "preact": "npm:preact@10.25.4",
     "preact-render-to-string": "npm:preact-render-to-string@6.5.13",
