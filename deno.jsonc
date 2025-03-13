@@ -21,7 +21,7 @@
     "@twind/preset-tailwind": "npm:@twind/preset-tailwind@1.1.4",
     "@webview/webview": "jsr:@webview/webview@^0.9.0",
     "dayjs": "npm:dayjs@1.11.13",
-    "preact": "npm:preact@10.26.2",
+    "preact": "npm:preact@10.26.3",
     "preact-render-to-string": "npm:preact-render-to-string@6.5.13",
     "~/": "./"
   },
