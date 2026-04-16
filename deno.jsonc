@@ -22,7 +22,7 @@
     "@webview/webview": "jsr:@webview/webview@^0.9.0",
     "dayjs": "npm:dayjs@1.11.20",
     "preact": "npm:preact@10.29.0",
-    "preact-render-to-string": "npm:preact-render-to-string@6.6.6",
+    "preact-render-to-string": "npm:preact-render-to-string@6.6.7",
     "~/": "./"
   },
   "exclude": ["README.md"]
